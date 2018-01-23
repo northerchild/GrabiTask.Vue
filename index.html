@@ -3,10 +3,31 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Vue Task</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
 	<div id="taskApp">
-		<h1>{{nameApp}}</h1>
+		<div class="container">
+		  <div id="taskApp" class="col-sm-12 col-sm-offset-2 text-center">
+		   <h1>{{nameApp}}</h1>
+		   <table class="table">
+		   	<thead>
+		   		<tr>
+		   			<th>¡Hecho!</th>
+		   			<th>Tarea</th>
+		   			<th>Borrar</th>
+		   		</tr>
+		   	</thead>
+		   	<tbody>
+		   		<tr v-for="tarea in tareas">
+		   			<td><input type="checkbox" v-model="tarea.hecho"></td>
+		   			<td>{{tarea.titulo}}</td>
+		   			<td><button @click="eliminarTarea(tarea)" class="btn btn-danger">Eliminar</button></td>
+		   		</tr>
+		   	</tbody>
+		   </table>
+		  </div>
+		</div>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 	<script src="assets/main.vue"></script>
