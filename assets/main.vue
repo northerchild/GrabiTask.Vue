@@ -5,7 +5,7 @@ new Vue({
 	 tareas:[
 	{
 	 	titulo: 'tareas',
-	 	hecho: true
+	 	hecho: false
 	},
 	{
 	 	titulo: 'tareas 2',
@@ -18,7 +18,21 @@ new Vue({
 	]
 },methods:{
 	eliminarTarea:function(tarea){
-	this.tareas.splice(this.tareas.indexOf(tarea),1)
+	this.tareas.splice(this.tareas.indexOf(tarea),1),
+	swal("¡Felicidades terminaste la tarea!", "¡Recuerda tomar un descanso!", "success");
+},
+	agregarTarea: function(e){
+	e.preventDefault()
+	this.tareas.push({
+	titulo:this.tareas.titulo,
+	hecho: false,
+
+})
+	swal({
+	  title: "Creaste la tarea: " + this.tareas.titulo,
+	  text: "¡Vamos con todo, creemos en ti!",
+	})
+	this.tareas.titulo = ' '
 }
 }
 })

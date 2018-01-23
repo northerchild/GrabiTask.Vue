@@ -4,12 +4,23 @@
 	<meta charset="UTF-8">
 	<title>Vue Task</title>
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+	  .app-form input{
+	    border-radius: 0;
+	  }
+	  .tareaRealizada {
+	    text-decoration: line-through;
+	  }
+    </style>
 </head>
 <body>
-	<div id="taskApp">
+	<div id="taskApp" class="col-sm-12 col-sm-offset-2 text-center">
 		<div class="container">
-		  <div id="taskApp" class="col-sm-12 col-sm-offset-2 text-center">
 		   <h1>{{nameApp}}</h1>
+		   <form @submit="agregarTarea">
+		   	<input type="text" v-model="tareas.titulo" placeholder="Escribe Tú Tarea n_n">
+			<input type="submit" value="Añadir tarea" class="btn btn-success">
+		   </form>
 		   <table class="table">
 		   	<thead>
 		   		<tr>
@@ -21,14 +32,14 @@
 		   	<tbody>
 		   		<tr v-for="tarea in tareas">
 		   			<td><input type="checkbox" v-model="tarea.hecho"></td>
-		   			<td>{{tarea.titulo}}</td>
+		   			<td :class="{tareaRealizada: tarea.hecho}">{{tarea.titulo}}</td>
 		   			<td><button @click="eliminarTarea(tarea)" class="btn btn-danger">Eliminar</button></td>
 		   		</tr>
 		   	</tbody>
 		   </table>
-		  </div>
 		</div>
 	</div>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 	<script src="assets/main.vue"></script>
 </body>
